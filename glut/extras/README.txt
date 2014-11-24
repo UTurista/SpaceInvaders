@@ -1,0 +1,1 @@
+The executable requires the file - glut32.dll - to be in the same folder
