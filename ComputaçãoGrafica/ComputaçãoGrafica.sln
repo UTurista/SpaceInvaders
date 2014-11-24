@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Space_Invaders", "Space_Invaders\Space_Invaders.vcxproj", "{96377F7A-E957-4077-AA52-4ADADA3FF0EF}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://istcomputacaografica034.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Space_Invaders\\Space_Invaders.vcxproj
+		SccProjectName1 = Space_Invaders
+		SccLocalPath1 = Space_Invaders
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96377F7A-E957-4077-AA52-4ADADA3FF0EF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{96377F7A-E957-4077-AA52-4ADADA3FF0EF}.Debug|Win32.Build.0 = Debug|Win32
+		{96377F7A-E957-4077-AA52-4ADADA3FF0EF}.Release|Win32.ActiveCfg = Release|Win32
+		{96377F7A-E957-4077-AA52-4ADADA3FF0EF}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
