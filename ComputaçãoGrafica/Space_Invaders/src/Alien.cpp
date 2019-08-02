@@ -1,11 +1,9 @@
-﻿#ifndef _IOSTREAM_H_
-#define _IOSTREAM_H_
+﻿
 #include <iostream>
-#endif
-#ifndef _ALIEN_H_
-#define _ALIEN_H_
+#include "GL\glut.h"
 #include "Alien.h"
-#endif
+#include "Bullet.h"
+#include "Material.h"
 
 #define BURSTFIRE 200
 

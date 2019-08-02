@@ -1,13 +1,8 @@
-#ifndef _IOSTREAM_H_
-#define _IOSTREAM_H_
+#include <cmath> 
 #include <iostream>
-#endif
 #include "Canon.h"
-#ifndef _MATERIAL_H_
-#define _MATERIAL_H_
 #include "Material.h"
-#endif
-#include <cmath>        // std::abs
+#include "Bullet.h"
 
 #define BURSTFIRE 200
 

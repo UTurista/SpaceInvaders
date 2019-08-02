@@ -1,21 +1,16 @@
+#pragma once
 #include "ParticleManager.h"
 #include "Canon.h"
-#ifndef _ALIEN_H_
-#define _ALIEN_H_
 #include "Alien.h"
-#endif
 #include "Shield.h"
 #include "Camera.h"
 #include "Background.h"
-#ifndef _VECTOR_H_
-#define _VECTOR_H_
 #include <vector>
-#endif
 #include <sstream>
-#ifndef _GLUT_H_
-#define _GLUT_H_
+#include <stdlib.h>
 #include <GL/glut.h>
-#endif
+#include <string>
+
 
 class GameController{
 	Canon *canon;					//Canon -Jogador-
@@ -63,7 +58,7 @@ public:
 	//A função controla o contador do numero de voltas que os aliens podem dar ate poderem descer.
 	void checkDownMov();
 
-	void GameController::DisplayString( const int x, const int y, const string &label, const void * font = (const void*)0) const;
+	void GameController::DisplayString( const int x, const int y, const std::string &label, const void * font = (const void*)0) const;
 
 	void HUD();
 

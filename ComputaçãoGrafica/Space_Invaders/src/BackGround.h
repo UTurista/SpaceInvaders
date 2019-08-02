@@ -1,10 +1,4 @@
-#ifndef _GLUT_H_
-#define _GLUT_H_
-#include <GL/glut.h>
-#endif
-
-using std::string;
-
+#pragma once
 
 /* BackGround
  * 

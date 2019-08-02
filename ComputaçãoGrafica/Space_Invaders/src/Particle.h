@@ -1,13 +1,5 @@
-
-#ifndef _GLUT_H_
-#define _GLUT_H_
-#include <GL/glut.h>
-#endif
-
-#ifndef _MATERIAL_H_
-#define _MATERIAL_H_
+#pragma once
 #include "Material.h"
-#endif
 
 
 

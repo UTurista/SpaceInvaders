@@ -1,17 +1,10 @@
-#ifndef _COLLIDER_H_
-#define _COLLIDER_H_
+#pragma once
 #include "Collider.h"
-#endif
-#ifndef _MATERIAL_H_
-#define _MATERIAL_H_
 #include "Material.h"
-#endif
-#ifndef _ALIEN_H_
-#define _ALIEN_H_
-#include "Alien.h"
-#endif
 
 
+class Alien;
+class Bullet;
 
 class Shield: public Collider{
 	float pos_x;	//Posicção do canto inferior esquerdo no eixo XX

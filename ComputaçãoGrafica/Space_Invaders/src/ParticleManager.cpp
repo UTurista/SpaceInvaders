@@ -1,4 +1,7 @@
+#include <iostream>
+#include <GL\glut.h>
 #include "ParticleManager.h"
+#include "Particle.h"
 #define EFFECT 250
 
 /* Construtor por omissão

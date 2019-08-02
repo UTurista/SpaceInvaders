@@ -1,13 +1,7 @@
-#ifndef _BULLET_
-#define _BULLET_
+
 #include "Bullet.h"
-#endif
-
-#ifndef _GLUT_H_
-#define _GLUT_H_
+#include <stdlib.h>
 #include <GL/glut.h>
-#endif
-
 #include <cmath>
 
 

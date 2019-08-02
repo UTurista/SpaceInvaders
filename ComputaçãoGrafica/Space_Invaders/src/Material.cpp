@@ -1,13 +1,5 @@
-#ifndef _IOSTREAM_H_
-#define _IOSTREAM_H_
 #include <iostream>
-#endif
-#ifndef _MATERIAL_H_
-#define _MATERIAL_H_
 #include "Material.h"
-#endif
-
-
 
 
 

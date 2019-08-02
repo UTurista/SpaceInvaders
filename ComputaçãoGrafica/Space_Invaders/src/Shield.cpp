@@ -1,13 +1,12 @@
-#ifndef _IOSTREAM_H_
-#define _IOSTREAM_H_
 #include <iostream>
-#endif
+#include <stdlib.h>
 #include <GL/glut.h>
 #include "Shield.h"
-#ifndef _MATERIAL_H_
-#define _MATERIAL_H_
 #include "Material.h"
-#endif
+#include "Bullet.h"
+#include "Alien.h"
+
+
 
 Shield::Shield():pos_x(0), pos_y(0){}
 

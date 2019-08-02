@@ -1,14 +1,8 @@
-/* GameController:
- * 
- * 
- * 
-*/
-#ifndef _IOSTREAM_H_
-#define _IOSTREAM_H_
 #include <iostream>
-#endif
 #include <iomanip>
 #include "GameController.h"
+#include "Bullet.h"
+
 //DEFINES
 #define PROBABILIDADE 10
 
@@ -514,7 +508,7 @@ bool GameController::gameOver(){
  *
  *
  */
-void GameController::DisplayString( const int x, const int y, const string &label, const void * font) const
+void GameController::DisplayString( const int x, const int y, const std::string &label, const void * font) const
 {
     void * fontToUse = (font != NULL) ? (void*) font : GLUT_BITMAP_HELVETICA_12;
     glRasterPos2i( x, y);

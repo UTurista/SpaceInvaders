@@ -1,12 +1,7 @@
-#ifndef _IOSTREAM_H_
-#define _IOSTREAM_H_
+
 #include <iostream>
-#endif
 #include "BackGround.h"
-#ifndef _MATERIAL_H_
-#define _MATERIAL_H_
 #include "Material.h"
-#endif
 #include <string>
 #include "glbmp.h"
 

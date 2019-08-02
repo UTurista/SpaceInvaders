@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 Classe: Camera
 Facilita a criação de novas cameras no jogo. estas novas cameras são sempre

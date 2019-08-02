@@ -1,15 +1,4 @@
-#ifndef _GLUT_H_
-#define _GLUT_H_
-#include <GL/glut.h>
-#endif
-
-#ifndef _IOSTREAM_H_
-#define _IOSTREAM_H_
-#include <iostream>
-#endif
-
 int ilumination(0);
-
 
 void myDisplay(void);
 

@@ -1,21 +1,6 @@
-#ifndef _BULLET_
-#define _BULLET_
-#include "Bullet.h"
-#endif
-#ifndef _GLUT_H_
-#define _GLUT_H_
-#include <GL/glut.h>
-#endif
-
-#ifndef _VECTOR_H_
-#define _VECTOR_H_
+#pragma once
 #include <vector>
-#endif
-
-#ifndef _COLLIDER_H_
-#define _COLLIDER_H_
 #include "Collider.h"
-#endif
 
 
 

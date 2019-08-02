@@ -1,13 +1,7 @@
-#ifndef _VECTOR_H_
-#define _VECTOR_H_
+#pragma once
 #include <vector>
-#endif
 
-#ifndef _BULLET_
-#define _BULLET_
-#include "Bullet.h"
-#endif
-
+class Bullet;
 
 class Collider{
 
