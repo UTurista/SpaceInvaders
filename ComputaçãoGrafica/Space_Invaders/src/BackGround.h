@@ -5,23 +5,20 @@
  * 
  * 
 */
-class BackGround{
+class BackGround {
 
-
-	public:
-	/* BackGround::BackGround()
+public:
+    /* BackGround::BackGround()
 	 * >Construtor do BackGround;
 	*/
-	BackGround();
+    BackGround();
 
-
-	/* 
+    /* 
 	 * BackGround::draw()
 	 * >Envia as ordens de desenho para o OpenGl
      * >Nao desenha, ou seja, não faz GlFlush()
 	*/
-	void draw();
+    void draw();
 
-	void LoadTexture(const char * bitmap_file);
-
+    void LoadTexture(const char* bitmap_file);
 };

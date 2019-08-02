@@ -1,13 +1,11 @@
-#include <iostream>
 #include "Particle.h"
+#include <iostream>
 /* Construtor por omissão
  * TODO: Convem melhorar algumas inicializações
  */
-Particle::Particle(){
-
-
+Particle::Particle()
+{
 }
-
 
 /* Construtor
  * INPUT: 
@@ -16,26 +14,27 @@ Particle::Particle(){
  *	>float: vx, vy, vz		»»» Velocidade inicial das particulas, respectivamente no eixo Xx, Yy, Zz
  *	>float: ax, ay, az		»»» Acelaração das particulas, respectivamente no eixo Xx, Yy, Zz
  */
-Particle::Particle(int timeCreated,float px,float py,float pz,float vx, float vy, float vz,float ax,float ay,float az){
-	
-	_px = px;
-	_py = py;
-	_pz = pz;
+Particle::Particle(int timeCreated, float px, float py, float pz, float vx, float vy, float vz, float ax, float ay, float az)
+{
 
-	//A multiplicação serve para reduzir o efeito
-	_vx = vx*0.001;
-	_vy = vy*0.001;
-	_vz = vz*0.001;
+    _px = px;
+    _py = py;
+    _pz = pz;
 
-	//A multiplicação serve para reduzir o efeito
-	_ax = ax*0.0001;
-	_ay = ay*0.001;
-	_az = az*0.001;
-	
-	_mat.predefMaterial(PARTICLE);
-	
-	_timeCreated = timeCreated;
-	_lastUpdate = timeCreated;
+    //A multiplicação serve para reduzir o efeito
+    _vx = vx * 0.001;
+    _vy = vy * 0.001;
+    _vz = vz * 0.001;
+
+    //A multiplicação serve para reduzir o efeito
+    _ax = ax * 0.0001;
+    _ay = ay * 0.001;
+    _az = az * 0.001;
+
+    _mat.predefMaterial(PARTICLE);
+
+    _timeCreated = timeCreated;
+    _lastUpdate = timeCreated;
 }
 
 /* Design
@@ -45,21 +44,21 @@ Particle::Particle(int timeCreated,float px,float py,float pz,float vx, float vy
  *	 0:	bem sucedido
  *  -1:	mal sucedido
  */
-int Particle::design(){
+int Particle::design()
+{
 
-	glPushMatrix();
-								
-		glTranslatef(_px, _py, _pz);	//Preparar todo desenho de acordo com o ofset geral
-		glScalef(.1,.1,.1);	//Possibilidade de escalar
+    glPushMatrix();
 
-		_mat.setMaterial();
-		glutSolidSphere(2,10, 10);
+    glTranslatef(_px, _py, _pz); //Preparar todo desenho de acordo com o ofset geral
+    glScalef(.1, .1, .1); //Possibilidade de escalar
 
-	glPopMatrix();
+    _mat.setMaterial();
+    glutSolidSphere(2, 10, 10);
 
-	return 0;
+    glPopMatrix();
+
+    return 0;
 }
-
 
 /* Draw
  *	>Fução interface para tratar do design das particulas
@@ -67,15 +66,14 @@ int Particle::design(){
  *	 0:	bem sucedido
  *  -1:	mal sucedido
  */
-int Particle::draw(){
-	if(_life){
-		fade();
-		design();
-	}
-	return 0;
+int Particle::draw()
+{
+    if (_life) {
+        fade();
+        design();
+    }
+    return 0;
 }
-
-
 
 /* Update
  *	>Actualiza os valores de posição e velocidade
@@ -83,35 +81,35 @@ int Particle::draw(){
  *	 0:	bem sucedido
  *  -1:	mal sucedido
  */
-int Particle::update(){
-	float time = glutGet(GLUT_ELAPSED_TIME);
-	float delta= (time-_lastUpdate);
-	if( (time-_timeCreated)>1500){
-		_life=false;
-		return 0;
-	}
+int Particle::update()
+{
+    float time = glutGet(GLUT_ELAPSED_TIME);
+    float delta = (time - _lastUpdate);
+    if ((time - _timeCreated) > 1500) {
+        _life = false;
+        return 0;
+    }
 
-
-	_px += (_vx * delta);
-	_py += (_vy * delta);
-	_pz += (_vz * delta);
+    _px += (_vx * delta);
+    _py += (_vy * delta);
+    _pz += (_vz * delta);
 
     _vx += (_ax * delta);
     _vy += (_ay * delta);
     _vz += (_az * delta);
-       
-	_lastUpdate=time;
 
-	return 0;
+    _lastUpdate = time;
+
+    return 0;
 }
 
 /* isAlive
  *	>Retorna se a particula está viva
  */
-bool Particle::isAlive(){
-	return _life;
+bool Particle::isAlive()
+{
+    return _life;
 }
-
 
 /* Fade
  *	>Pede os valores do material e actualiza-os com novos
@@ -119,12 +117,13 @@ bool Particle::isAlive(){
  *	 0:	bem sucedido
  *  -1:	mal sucedido
  */
-int Particle::fade(){
-	float amb[4], dif[4], espc[4], emiss[4], shine(0);
-	
-	_mat.getMaterial(amb, dif, espc, emiss, shine);
+int Particle::fade()
+{
+    float amb[4], dif[4], espc[4], emiss[4], shine(0);
 
-	/*
+    _mat.getMaterial(amb, dif, espc, emiss, shine);
+
+    /*
 	amb[0];
 	amb[1];
 	amb[2];
@@ -145,43 +144,40 @@ int Particle::fade(){
 	emiss[2];
 	emiss[3];
 	*/
-	amb[0]= amb[0]-0.01;
-	
-	amb[3]= amb[3]-0.01;
+    amb[0] = amb[0] - 0.01;
 
-	emiss[0]= emiss[0]-0.01;
-	emiss[3] = emiss[3]-0.01;
+    amb[3] = amb[3] - 0.01;
 
-	_mat.editMaterial(amb, dif, espc, emiss, shine);
+    emiss[0] = emiss[0] - 0.01;
+    emiss[3] = emiss[3] - 0.01;
 
-	return 0;
+    _mat.editMaterial(amb, dif, espc, emiss, shine);
+
+    return 0;
 }
 
+int Particle::respawn(int timeCreated, float px, float py, float pz, float vx, float vy, float vz, float ax, float ay, float az)
+{
 
+    _px = px;
+    _py = py;
+    _pz = pz;
 
+    //A multiplicação serve para reduzir o efeito
+    _vx = vx * 0.001;
+    _vy = vy * 0.001;
+    _vz = vz * 0.001;
 
-int Particle::respawn(int timeCreated,float px,float py,float pz,float vx, float vy, float vz,float ax,float ay,float az){
-	
-	_px = px;
-	_py = py;
-	_pz = pz;
+    //A multiplicação serve para reduzir o efeito
+    _ax = ax * 0.0001;
+    _ay = ay * 0.001;
+    _az = az * 0.001;
 
-	//A multiplicação serve para reduzir o efeito
-	_vx = vx*0.001;
-	_vy = vy*0.001;
-	_vz = vz*0.001;
+    _mat.predefMaterial(PARTICLE);
 
-	//A multiplicação serve para reduzir o efeito
-	_ax = ax*0.0001;
-	_ay = ay*0.001;
-	_az = az*0.001;
-	
-	_mat.predefMaterial(PARTICLE);
-	
-	_timeCreated = timeCreated;
-	_lastUpdate = timeCreated;
-	_life=true;
+    _timeCreated = timeCreated;
+    _lastUpdate = timeCreated;
+    _life = true;
 
-	return 0;
+    return 0;
 }
-

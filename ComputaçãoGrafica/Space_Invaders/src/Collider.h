@@ -3,11 +3,9 @@
 
 class Bullet;
 
-class Collider{
-
+class Collider {
 
 public:
-	virtual std::vector<Bullet*> bulletPointer()=0;
-	virtual bool colide(Bullet* bullet)=0;
-
+    virtual std::vector<Bullet*> bulletPointer() = 0;
+    virtual bool colide(Bullet* bullet) = 0;
 };

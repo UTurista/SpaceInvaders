@@ -2,7 +2,7 @@ int ilumination(0);
 
 void myDisplay(void);
 
-int min(int a, int b){return (a>b) ? b: a;}
+int min(int a, int b) { return (a > b) ? b : a; }
 
 void myCamera();
 

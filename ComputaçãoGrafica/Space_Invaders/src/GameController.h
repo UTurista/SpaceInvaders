@@ -1,105 +1,93 @@
 #pragma once
-#include "ParticleManager.h"
-#include "Canon.h"
 #include "Alien.h"
-#include "Shield.h"
-#include "Camera.h"
 #include "Background.h"
-#include <vector>
+#include "Camera.h"
+#include "Canon.h"
+#include "ParticleManager.h"
+#include "Shield.h"
+#include <GL/glut.h>
 #include <sstream>
 #include <stdlib.h>
-#include <GL/glut.h>
 #include <string>
+#include <vector>
 
+class GameController {
+    Canon* canon; //Canon -Jogador-
+    BackGround* background; //Fundo do jogo
+    std::vector<Alien*> invaders; //Aliens
+    std::vector<Shield*> shields; //Shields
+    std::vector<Camera*> cameras; //Cameras
+    int _activeCamera; //Selector da camera em Uso
+    ParticleManager prtManager;
 
-class GameController{
-	Canon *canon;					//Canon -Jogador-
-	BackGround *background;			//Fundo do jogo
-	std::vector<Alien*> invaders;	//Aliens
-	std::vector<Shield*> shields;	//Shields
-	std::vector<Camera*> cameras;	//Cameras 
-	int _activeCamera;				//Selector da camera em Uso
-	ParticleManager prtManager;
+    //Limites do cenário
+    const float leftLimit;
+    const float rightLimit;
 
-	//Limites do cenário
-	const float leftLimit;
-	const float rightLimit;
+    //Contador de voltas dos aliens
+    int alien_counter;
 
+    //Numero de voltas maximo dos aliens
+    int alien_maxcounter;
 
-	//Contador de voltas dos aliens
-	int alien_counter;
+    //Direcção dos Aliens
+    bool left;
 
-	//Numero de voltas maximo dos aliens
-	int alien_maxcounter;
-	
-	//Direcção dos Aliens
-	bool left;			
+    //Pontuaçao
+    int score;
 
-	//Pontuaçao
-	int score;
-
-	//Vidas
-	int lives;
-
-
-
-
+    //Vidas
+    int lives;
 
 public:
-	//Constructor com os limites esquerdo e direito;
-	GameController(float left, float right);
+    //Constructor com os limites esquerdo e direito;
+    GameController(float left, float right);
 
-	//Inicializador do canhão e do aliens
-	void init();
+    //Inicializador do canhão e do aliens
+    void init();
 
-	//A função chama todas as funções de desenho de todos os filhos e termina com um glFlush();
-	void display();
+    //A função chama todas as funções de desenho de todos os filhos e termina com um glFlush();
+    void display();
 
-	//A função controla o contador do numero de voltas que os aliens podem dar ate poderem descer.
-	void checkDownMov();
+    //A função controla o contador do numero de voltas que os aliens podem dar ate poderem descer.
+    void checkDownMov();
 
-	void GameController::DisplayString( const int x, const int y, const std::string &label, const void * font = (const void*)0) const;
+    void GameController::DisplayString(const int x, const int y, const std::string& label, const void* font = (const void*)0) const;
 
-	void HUD();
+    void HUD();
 
-	//A função tick do GameController é a função chamada de XX em XXmsec. Esta compara a posição relativa da colmeia com os
-	//limites laterais e indica a direcção que a colmeia deve tomar.
-	void tick();
+    //A função tick do GameController é a função chamada de XX em XXmsec. Esta compara a posição relativa da colmeia com os
+    //limites laterais e indica a direcção que a colmeia deve tomar.
+    void tick();
 
-
-	/*
+    /*
 	 * São estas as funções que verificam se o canhão pode se deslocar. O teste compara a posição do canhão...//
 	 * //...com os limites laterais, caso passe o teste, é chamada a respectia função do canhão.
 	*/
-	void canonRight(float timeCalled);
-	void canonLeft(float timeCalled);
+    void canonRight(float timeCalled);
+    void canonLeft(float timeCalled);
 
-
-	/*
+    /*
 	 * Camera Update:
 	 * >Verifica o valor do Selector de Camera em Uso, e devolve os valors da camera guardada...//
 	 * //...nessa posição
 	 * >Recebe 9 apontadores para doubles e actualiza-os com os valores para a camera
 	 * >Recebe um apontador para bool e actualização com indicação se a camera está ou não em perspectiva
 	 */
-	void cameraUpdate(	double* eyeX,	double* eyeY,	double* eyeZ,
-						double* atX,	double* atY,	double* atZ,
-						double* upX,	double* upY,	double* upZ, bool* isPerspective);
+    void cameraUpdate(double* eyeX, double* eyeY, double* eyeZ,
+        double* atX, double* atY, double* atZ,
+        double* upX, double* upY, double* upZ, bool* isPerspective);
 
+    //Camera Change: Actualiza o valor da camera em utilização
+    void cameraChange(int cam);
 
+    void myLightning();
 
-	//Camera Change: Actualiza o valor da camera em utilização
-	void cameraChange(int cam);
+    void fireWeapon();
 
+    int aliensFireWeapon();
 
+    void colliderManager();
 
-	void myLightning();
-
-	void fireWeapon();
-
-	int aliensFireWeapon();
-	
-	void colliderManager();
-
-	bool gameOver();
+    bool gameOver();
 };

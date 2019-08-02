@@ -3,16 +3,16 @@
 
 class Particle;
 
-class ParticleManager{
-	std::vector<Particle*> _ParticleVec;
-	Particle* asd;
+class ParticleManager {
+    std::vector<Particle*> _ParticleVec;
+    Particle* asd;
 
 private:
-	int valuesGenerator(float *px,float *py,float *pz,float *vx, float *vy, float *vz,float *ax,float *ay,float *az);
+    int valuesGenerator(float* px, float* py, float* pz, float* vx, float* vy, float* vz, float* ax, float* ay, float* az);
 
 public:
-	ParticleManager();
-	int tick();
-	int drawAt(float px,float  py,float pz);
-	int draw();
+    ParticleManager();
+    int tick();
+    int drawAt(float px, float py, float pz);
+    int draw();
 };

@@ -1,14 +1,13 @@
-#include <iostream>
-#include <GL\glut.h>
 #include "ParticleManager.h"
 #include "Particle.h"
+#include <GL\glut.h>
+#include <iostream>
 #define EFFECT 250
 
 /* Construtor por omissão
  * TODO: Convem melhorar algumas inicializações
  */
-ParticleManager::ParticleManager(){}
-
+ParticleManager::ParticleManager() {}
 
 /* drawAt
  *	>Não é o melhor nome;
@@ -21,57 +20,61 @@ ParticleManager::ParticleManager(){}
  *	 0:	bem sucedido
  *  -1:	mal sucedido
  */
-int ParticleManager::drawAt(float px, float py, float pz){
-	std::cout<<"ParticleManager::drawAt"<<std::endl<<" -INPUT: "<<px<<" "<<py<<" "<<pz<<std::endl;
+int ParticleManager::drawAt(float px, float py, float pz)
+{
+    std::cout << "ParticleManager::drawAt" << std::endl
+              << " -INPUT: " << px << " " << py << " " << pz << std::endl;
 
-	bool _new = true;
-	int counter(0);
-	float vx, vy, vz, ax, ay, az;
-	std::vector<Particle*>::iterator it = _ParticleVec.begin();
+    bool _new = true;
+    int counter(0);
+    float vx, vy, vz, ax, ay, az;
+    std::vector<Particle*>::iterator it = _ParticleVec.begin();
 
-	std::cout<<"ParticleManager::drawAt"<<"Currently there's "<< _ParticleVec.size()<<" particles = "<<_ParticleVec.size()/EFFECT<<" Effects"<<std::endl;
-	while(it != _ParticleVec.end() && counter<=EFFECT){
-		
+    std::cout << "ParticleManager::drawAt"
+              << "Currently there's " << _ParticleVec.size() << " particles = " << _ParticleVec.size() / EFFECT << " Effects" << std::endl;
+    while (it != _ParticleVec.end() && counter <= EFFECT) {
 
-		if((*it)->isAlive()){
-			std::cout<<"ParticleManager::drawAt"<<"Effect is Alive going for the next"<<std::endl;
-			it+=EFFECT;
-			continue;
-		}
+        if ((*it)->isAlive()) {
+            std::cout << "ParticleManager::drawAt"
+                      << "Effect is Alive going for the next" << std::endl;
+            it += EFFECT;
+            continue;
+        }
 
-			valuesGenerator(&px, &py,&pz, &vx, &vy, &vz, &ax, &ay, &az);
-			float time = glutGet(GLUT_ELAPSED_TIME);
-			(*it)->respawn(
-					time,
-					px+6,py+5,pz,
-					vx,vy,vz,
-					ax,ay,az);
-			counter++;
-			it++;
-			_new=false;
-	}
+        valuesGenerator(&px, &py, &pz, &vx, &vy, &vz, &ax, &ay, &az);
+        float time = glutGet(GLUT_ELAPSED_TIME);
+        (*it)->respawn(
+            time,
+            px + 6, py + 5, pz,
+            vx, vy, vz,
+            ax, ay, az);
+        counter++;
+        it++;
+        _new = false;
+    }
 
-	counter=0;
+    counter = 0;
 
-	if(_new){
-		std::cout<<"ParticleManager::drawAt"<<"No available Effects found, creating more"<<std::endl;
-		while(counter != EFFECT){
+    if (_new) {
+        std::cout << "ParticleManager::drawAt"
+                  << "No available Effects found, creating more" << std::endl;
+        while (counter != EFFECT) {
 
-			valuesGenerator(&px, &py,&pz, &vx, &vy, &vz, &ax, &ay, &az);
-			float time = glutGet(GLUT_ELAPSED_TIME);
+            valuesGenerator(&px, &py, &pz, &vx, &vy, &vz, &ax, &ay, &az);
+            float time = glutGet(GLUT_ELAPSED_TIME);
 
-			_ParticleVec.push_back(
-				new Particle(
-					time,
-					px+6,py+5,pz,
-					vx,vy,vz,
-					ax,ay,az));
-			//std::cout<<"creating Particle "<<counter+1<<" of "<<EFFECT<<std::endl;
-			counter++;
-		}
-	}
+            _ParticleVec.push_back(
+                new Particle(
+                    time,
+                    px + 6, py + 5, pz,
+                    vx, vy, vz,
+                    ax, ay, az));
+            //std::cout<<"creating Particle "<<counter+1<<" of "<<EFFECT<<std::endl;
+            counter++;
+        }
+    }
 
-	return 0;
+    return 0;
 }
 
 /* Draw
@@ -81,18 +84,17 @@ int ParticleManager::drawAt(float px, float py, float pz){
  *	 0:	bem sucedido
  *  -1:	mal sucedido
  */
-int ParticleManager::draw(){
-	std::vector<Particle*>::iterator it = _ParticleVec.begin();
+int ParticleManager::draw()
+{
+    std::vector<Particle*>::iterator it = _ParticleVec.begin();
 
-	while(it != _ParticleVec.end()){
-		(*it)->draw();
-		it++;
-	}
+    while (it != _ParticleVec.end()) {
+        (*it)->draw();
+        it++;
+    }
 
-	return 0;
-
+    return 0;
 }
-
 
 /* tick
  *	>Fução periodica
@@ -102,30 +104,30 @@ int ParticleManager::draw(){
  *	 0:	bem sucedido
  *  -1:	mal sucedido
  */
-int ParticleManager::tick(){
-	std::vector<Particle*>::iterator it = _ParticleVec.begin();
+int ParticleManager::tick()
+{
+    std::vector<Particle*>::iterator it = _ParticleVec.begin();
 
-	while(it != _ParticleVec.end()){
-		(*it)->update();
-		it++;
-	}
-	return 0;
+    while (it != _ParticleVec.end()) {
+        (*it)->update();
+        it++;
+    }
+    return 0;
 }
 
+int ParticleManager::valuesGenerator(float* px, float* py, float* pz, float* vx, float* vy, float* vz, float* ax, float* ay, float* az)
+{
+    double v = 0.8 * rand() + 0.2;
+    if (v > 50)
+        v = 10;
+    double phi = rand() * 3.14;
+    double theta = 2.0 * rand() * 3.14;
 
-
-
-int ParticleManager::valuesGenerator(float *px,float *py,float *pz,float *vx, float *vy, float *vz,float *ax,float *ay,float *az){
-			double v = 0.8*rand()+0.2;
-			if(v>50)v=10;
-			double phi = rand()*3.14;
-			double theta = 2.0*rand()*3.14;
-
-			*vx = v * cos(theta) * sin(phi);
-			*vy = v * cos(phi);
-			*vz = v * sin(theta) * sin(phi);
-			*ax =  0.01f; /* just a little wind */
-			*ay = -0.15f; /* gravity pull */
-			*az =  0.00f;
-	return 0;
+    *vx = v * cos(theta) * sin(phi);
+    *vy = v * cos(phi);
+    *vz = v * sin(theta) * sin(phi);
+    *ax = 0.01f; /* just a little wind */
+    *ay = -0.15f; /* gravity pull */
+    *az = 0.00f;
+    return 0;
 }

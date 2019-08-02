@@ -22,7 +22,6 @@
 * Contact the author at: charles [at] chaoslizard [dot] org                   *
 ******************************************************************************/
 
-
 /******************************************************************************
 * glbmp.h v1.1 (2005 Mar. 15)                                                 *
 *                                                                             *
@@ -33,40 +32,34 @@
 *                 architectures (no changes here, just keeping synchronized). *
 ******************************************************************************/
 
-
 #ifndef __glbmp_h__
 #define __glbmp_h__
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
-
 
 /* glbmp_t
  *
  * The struct returned by glbmp_LoadBitmap.  It has enough information to
  * enable you to use it in OpenGL texture creation.
  */
-typedef struct glbmp_t
-{
-   int width;                /* width of bitmap                              */
-   int height;               /* height of bitmap                             */
+typedef struct glbmp_t {
+    int width; /* width of bitmap                              */
+    int height; /* height of bitmap                             */
 
-   unsigned char * rgb_data; /* pointer to buffer, width*height*3 in size,
+    unsigned char* rgb_data; /* pointer to buffer, width*height*3 in size,
                                 holding RGB bitmap data                      */
 } glbmp_t;
 
-
 /* outputs rgb_data as top down (default is bottom first)  */
-#define GLBMP_TOP_DOWN   1
+#define GLBMP_TOP_DOWN 1
 
 /* performs no dword alignment (default aligns lines on dword boundaries) */
 #define GLBMP_BYTE_ALIGN 2
 
 /* allows loading of any size bitmap (default is bitmaps must be 2^n x 2^m) */
-#define GLBMP_ANY_SIZE   4
-
+#define GLBMP_ANY_SIZE 4
 
 /* glbmp_LoadBitmap
  *
@@ -97,8 +90,7 @@ typedef struct glbmp_t
  * specify GLBMP_ANY_SIZE), but again if you need byte-packed data, specify
  * GLBMP_BYTE_ALIGN in flags (may break OpenGL though).
  */
-int glbmp_LoadBitmap(const char * bmp_file, int flags, glbmp_t * p_bmp_out);
-
+int glbmp_LoadBitmap(const char* bmp_file, int flags, glbmp_t* p_bmp_out);
 
 /* glbmp_FreeBitmap
  *
@@ -112,8 +104,7 @@ int glbmp_LoadBitmap(const char * bmp_file, int flags, glbmp_t * p_bmp_out);
  * Returns:
  * void
  */
-void glbmp_FreeBitmap(glbmp_t * p_bmp);
-
+void glbmp_FreeBitmap(glbmp_t* p_bmp);
 
 #ifdef __cplusplus
 }
