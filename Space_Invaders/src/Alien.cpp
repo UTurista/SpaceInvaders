@@ -1,8 +1,9 @@
 ﻿
+#include <stdlib.h>
 #include "Alien.h"
 #include "Bullet.h"
-#include "GL\glut.h"
 #include "Material.h"
+#include "glut.h"
 #include <iostream>
 
 #define BURSTFIRE 200
@@ -84,24 +85,23 @@ void Alien::fireWeapon()
 
         std::cout << _bulletsVec.size() << std::endl;
 
-                for
-                    each(Bullet * b in _bulletsVec)
-                    {
-                        if (!(b->isDrawing())) {
-                            b->resetBullet(pos_x + 5, pos_y);
-                            std::cout << "resetbullet" << std::endl;
-                            _new = false;
-                            break;
-                        }
-                    }
+        for each(Bullet * b in _bulletsVec)
+        {
+            if (!(b->isDrawing())) {
+                b->resetBullet(pos_x + 5, pos_y);
+                std::cout << "resetbullet" << std::endl;
+                _new = false;
+                break;
+            }
+        }
 
-                if (_new) {
-                    std::cout << "newbullet" << std::endl;
-                    Bullet* bullet = new Bullet(pos_x + 5, pos_y, 200, -0.050);
-                    _bulletsVec.push_back(bullet);
-                }
+        if (_new) {
+            std::cout << "newbullet" << std::endl;
+            Bullet* bullet = new Bullet(pos_x + 5, pos_y, 200, -0.050);
+            _bulletsVec.push_back(bullet);
+        }
 
-                _lastFire = glutGet(GLUT_ELAPSED_TIME);
+        _lastFire = glutGet(GLUT_ELAPSED_TIME);
     }
 }
 

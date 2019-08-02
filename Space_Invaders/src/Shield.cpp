@@ -1,10 +1,10 @@
+#include <stdlib.h>
 #include "Shield.h"
 #include "Alien.h"
 #include "Bullet.h"
 #include "Material.h"
-#include <GL/glut.h>
+#include "glut.h"
 #include <iostream>
-#include <stdlib.h>
 
 Shield::Shield()
     : pos_x(0)

@@ -1,8 +1,8 @@
 
-#include "Bullet.h"
-#include <GL/glut.h>
-#include <cmath>
 #include <stdlib.h>
+#include "Bullet.h"
+#include "glut.h"
+#include <cmath>
 
 Bullet::Bullet()
     : _posX(0)

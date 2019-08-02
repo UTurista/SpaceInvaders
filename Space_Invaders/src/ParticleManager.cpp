@@ -1,6 +1,7 @@
+#include <stdlib.h>
 #include "ParticleManager.h"
 #include "Particle.h"
-#include <GL\glut.h>
+#include "glut.h"
 #include <iostream>
 #define EFFECT 250
 

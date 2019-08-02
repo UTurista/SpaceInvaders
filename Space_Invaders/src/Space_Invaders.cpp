@@ -1,6 +1,6 @@
 //Includes
-#include "src/GameController.h"
-#include "src/SpaceInvaders.h"
+#include "GameController.h"
+#include "SpaceInvaders.h"
 #include <string>
 
 //Space Invaders Constants

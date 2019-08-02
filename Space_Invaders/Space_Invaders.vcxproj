@@ -56,7 +56,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\..\glut\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;include</AdditionalIncludeDirectories>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
@@ -85,7 +85,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Space_Invaders.cpp" />
+    <ClCompile Include="src\Space_Invaders.cpp" />
     <ClCompile Include="src\Alien.cpp" />
     <ClCompile Include="src\BackGround.cpp" />
     <ClCompile Include="src\Bullet.cpp" />
@@ -93,13 +93,14 @@
     <ClCompile Include="src\Canon.cpp" />
     <ClCompile Include="src\Collider.cpp" />
     <ClCompile Include="src\GameController.cpp" />
-    <ClCompile Include="src\glbmp.c" />
     <ClCompile Include="src\Material.cpp" />
     <ClCompile Include="src\Particle.cpp" />
     <ClCompile Include="src\ParticleManager.cpp" />
     <ClCompile Include="src\Shield.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\glut.h" />
+    <ClInclude Include="include\glbmp.h" />
     <ClInclude Include="src\Alien.h" />
     <ClInclude Include="src\BackGround.h" />
     <ClInclude Include="src\Bullet.h" />
@@ -107,12 +108,21 @@
     <ClInclude Include="src\Canon.h" />
     <ClInclude Include="src\Collider.h" />
     <ClInclude Include="src\GameController.h" />
-    <ClInclude Include="src\glbmp.h" />
     <ClInclude Include="src\Material.h" />
     <ClInclude Include="src\Particle.h" />
     <ClInclude Include="src\ParticleManager.h" />
     <ClInclude Include="src\Shield.h" />
     <ClInclude Include="src\SpaceInvaders.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="lib\glut32.dll">
+      <FileType>Document</FileType> 
+    </CopyFileToFolders>
+    <None Include="lib\glut.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="lib\glbmp.c" />
+    <Library Include="lib\glut32.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

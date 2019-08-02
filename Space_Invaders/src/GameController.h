@@ -1,13 +1,13 @@
 #pragma once
+#include <stdlib.h>
 #include "Alien.h"
 #include "Background.h"
 #include "Camera.h"
 #include "Canon.h"
 #include "ParticleManager.h"
 #include "Shield.h"
-#include <GL/glut.h>
+#include "glut.h"
 #include <sstream>
-#include <stdlib.h>
 #include <string>
 #include <vector>
 

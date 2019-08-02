@@ -1,5 +1,6 @@
 #pragma once
-#include <GL/glut.h>
+#include <stdlib.h>
+#include "glut.h"
 
 enum Mat {
     ALIEN_1_CORPO,

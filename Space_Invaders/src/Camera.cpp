@@ -1,6 +1,6 @@
-#include "Camera.h"
-#include <GL/glut.h>
 #include <stdlib.h>
+#include "Camera.h"
+#include "glut.h"
 
 /* Implementação de Camera
  */

@@ -158,24 +158,23 @@ void Canon::weaponFire()
 
         std::cout << _bulletsVec.size() << std::endl;
 
-                for
-                    each(Bullet * b in _bulletsVec)
-                    {
-                        if (!(b->isDrawing())) {
-                            b->resetBullet(getOffset(), 20);
-                            std::cout << "resetbullet" << std::endl;
-                            _new = false;
-                            break;
-                        }
-                    }
+        for each(Bullet * b in _bulletsVec)
+        {
+            if (!(b->isDrawing())) {
+                b->resetBullet(getOffset(), 20);
+                std::cout << "resetbullet" << std::endl;
+                _new = false;
+                break;
+            }
+        }
 
-                if (_new) {
-                    std::cout << "newbullet" << std::endl;
-                    Bullet* bullet = new Bullet(getOffset(), 200);
-                    _bulletsVec.push_back(bullet);
-                }
+        if (_new) {
+            std::cout << "newbullet" << std::endl;
+            Bullet* bullet = new Bullet(getOffset(), 200);
+            _bulletsVec.push_back(bullet);
+        }
 
-                _lastFire = glutGet(GLUT_ELAPSED_TIME);
+        _lastFire = glutGet(GLUT_ELAPSED_TIME);
     }
 }
 
